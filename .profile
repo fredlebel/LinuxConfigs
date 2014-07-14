@@ -1,2 +1,2 @@
 TZ='America/Toronto'; export TZ
-export PATH=$HOME/.cabal/bin:$PATH
+export PATH=$HOME/.cabal/bin:$HOME/bin:$PATH

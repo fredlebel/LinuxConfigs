@@ -77,7 +77,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_p     ), spawn "dmenu_run")
 
     -- launch Notepad++
-    , ((modm .|. shiftMask, xK_n     ), spawn "wine \"/home/fred/.wine/drive_c/Program Files (x86)/Notepad++/notepad++.exe\"")
+    , ((modm .|. shiftMask, xK_n     ), spawn "wine \"/home/fred/.wine/drive_c/Apps/Notepad++/notepad++.exe\"")
 
     -- launch gmrun
     --, ((modm .|. shiftMask, xK_p     ), spawn "gmrun")

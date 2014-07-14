@@ -66,7 +66,7 @@ xterm*VT100.showBlinkAsBold: true
 URxvt*background:                     #101010
 URxvt*foreground:                     #d0d0d0
 URxvt*color0:                         #101010
-URxvt*color1:                         #960050
+URxvt*color1:                         #b60050
 URxvt*color2:                         #66aa11
 URxvt*color3:                         #c47f2c
 URxvt*color4:                         #30309b
@@ -96,8 +96,8 @@ URxvt*cursorColor:                    #d0d0d0
 ! URxvt*pointerColor2:                  color
 ! URxvt*borderColor:                    color
 ! URxvt*iconFile:                       file
-! URxvt*font:                           fontname
-! URxvt*boldFont:                       fontname
+! URxvt*font:                           xft:Inconsolata:style=Semibold:pixelsize=12:antialias=true:hinting=slight
+! URxvt*boldFont:                       xft:Inconsolata:style=bold:pixelsize=12:antialias=true:hinting=slight
 ! URxvt*italicFont:                     fontname
 ! URxvt*boldItalicFont:                 fontname
 ! URxvt*intensityStyles:                boolean
