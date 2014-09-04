@@ -1,20 +1,20 @@
-Config { font = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
+Config { --font = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
+        font = "-Misc-Fixed-Medium-R-SemiCondensed--13-120-75-75-C-60-*-1"
        , bgColor = "black"
        , fgColor = "grey"
        , position = Top
        , lowerOnStart = True
-       , commands = [ Run Weather "EGPF" ["-t","<station>: <tempC>C","-L","18","-H","25","--normal","green","--high","red","--low","lightblue"] 36000
-                    , Run Network "eth0" ["-L","0","-H","32","--normal","green","--high","red"] 10
-                    , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
-                    , Run Memory ["-t","Mem: <usedratio>%"] 10
-                    , Run Swap [] 10
-                    , Run Com "uname" ["-s","-r"] "" 36000
+       , commands = [
+                      Run Network "enp0s3" ["-L","0","-H","32","--normal","green","--high","red", "-t", "Net: <rx>K/<tx>K"] 10
+                    , Run Cpu [    "-L","3","-H","80","-n","green","-h","red", "-b", "=", "-t", "Cpu: <bar>"]     10
+                    , Run Memory [ "-L","0","-H","80","-n","green","-h","red", "-b", "=", "-t", "Mem: <usedbar>"] 10
+                    , Run Swap [   "-L","3","-H","80","-n","green","-h","red", "-b", "=", "-t", "Swap: <usedratio>%"] 10
                     , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
-                    , Run DiskIO [("/", "DiskIO: (<read>/<write>)"), ("sda1", "<total>")] [] 10
-                    , Run DiskU [("sda1", "HD: (<used>/<size>)")] ["-L", "20", "-H", "50", "-m", "1", "-p", "3"] 20
+                    , Run DiskU [("/", "HD: <usedbar> (<used>/<size>)")]
+                        ["-L", "0", "-H", "90", "-n", "green", "-h", "red", "-b", "="] 20
                     , Run StdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %cpu% | %memory% * %swap% | %disku% | <fc=#ee9a00>%date%</fc>"
+       , template = "%StdinReader% }{ %cpu% | %memory% * %swap% | %disku% | %enp0s3% | <fc=#ee9a00>%date%</fc>"
        }

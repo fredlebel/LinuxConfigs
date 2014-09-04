@@ -1,3 +1,5 @@
 [user]
 	name = Frederic LeBel
 	email = frederic.lebel@gmail.com
+[push]
+	default = simple

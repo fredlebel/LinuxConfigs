@@ -1,0 +1,14 @@
+Config {-- font = "-misc-fixed-*-*-*-*-13-*-*-*-*-*-*-*"
+         -- font = "-Misc-Fixed-Medium-R-Normal--10-100-75-75-C-60-*-1"
+         font = "-Misc-Fixed-Medium-R-SemiCondensed--13-120-75-75-C-60-*-1"
+       , bgColor = "black"
+       , fgColor = "grey"
+       , position = Bottom
+       , lowerOnStart = True
+       , commands = [
+                    Run Com "xmobar-moc-status" [] "music" 10
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "}{ <action=mocp --previous><<</action> <action=mocp --toggle-pause> %music% </action> <action=mocp --next>>></action> "
+       }

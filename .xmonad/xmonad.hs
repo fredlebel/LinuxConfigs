@@ -58,12 +58,12 @@ myModMask       = mod4Mask
 --
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
-myWorkspaces    = ["code","browser","consoles","misc"]
+myWorkspaces    = ["1-code","2-www","3-terms","4-misc", "5-irc"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
 myNormalBorderColor  = "#dddddd"
-myFocusedBorderColor = "#ff0000"
+myFocusedBorderColor = "#ffff00"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -275,7 +275,14 @@ myStartupHook = return ()
 
 -- Run xmonad with the settings you specify. No need to modify this.
 --
-main = xmonad =<< xmobar defaults
+--main = xmonad =<< xmobar defaults
+main = xmonad =<< xmobar  =<< statusBar "xmobar ~/.xmobarrc_bottom" xmobarPP toggleStrutsKey defaults
+
+-- |
+-- Helper function which provides ToggleStruts keybinding
+--
+toggleStrutsKey :: XConfig t -> (KeyMask, KeySym)
+toggleStrutsKey XConfig{modMask = modm} = (modm, xK_b )
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
