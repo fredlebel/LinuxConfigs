@@ -1,0 +1,71 @@
+#! /usr/bin/env bash
+#
+
+IPCOL="#ffff44"     # The colour to be used to draw the ip addresses
+
+line=$(bspc control --get-status)
+
+num_mon=1
+
+case $line in
+    S*)
+        sys_infos="${line#?}"
+        ;;
+    T*)
+        title="${line#?}"
+        ;;
+    W*)
+        wm_infos=""
+        IFS=':'
+        set -- ${line#?}
+        while [ $# -gt 0 ] ; do
+            item=$1
+            name=${item#???}
+            case $item in
+                M*)
+                    # active monitor
+                    if [ $num_mon -gt 1 ] ; then
+                        wm_infos="$wm_infos %{F$COLOR_ACTIVE_MONITOR_FG}%{B$COLOR_ACTIVE_MONITOR_BG} ${name} %{B-}%{F-}  "
+                    fi
+                    ;;
+                m*)
+                    # inactive monitor
+                    if [ $num_mon -gt 1 ] ; then
+                        wm_infos="$wm_infos %{F$COLOR_INACTIVE_MONITOR_FG}%{B$COLOR_INACTIVE_MONITOR_BG} ${name} %{B-}%{F-}  "
+                    fi
+                    ;;
+                O*)
+                    # focused occupied desktop
+                    wm_infos="${wm_infos} <fc=#FFFF40>[${name}]</fc>"
+                    ;;
+                F*)
+                    # focused free desktop
+                    wm_infos="${wm_infos} <fc=#FFFF40>${name}</fc>"
+                    ;;
+                U*)
+                    # focused urgent desktop
+                    wm_infos="${wm_infos} <fc=#FFFF40><${name}></fc>"
+                    ;;
+                o*)
+                    # occupied desktop
+                    wm_infos="${wm_infos} <fc=#808080>[${name}]</fc>"
+                    ;;
+                f*)
+                    # free desktop
+                    wm_infos="${wm_infos} <fc=#343434>${name}</fc>"
+                    ;;
+                u*)
+                    # urgent desktop
+                    wm_infos="${wm_infos} <fc=#F62217><${name}></fc>"
+                    ;;
+                L*)
+                    # layout
+                    wm_infos="$wm_infos       <fc=#38ACEC>(${item#?})</fc>"
+                    ;;
+            esac
+            shift
+        done
+        ;;
+esac
+printf "%s\n" "$wm_infos $title $sys_infos"
+

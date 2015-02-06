@@ -1,31 +1,3 @@
-! Molokai theme
-*xterm*background: #101010
-*xterm*foreground: #d0d0d0
-*xterm*cursorColor: #d0d0d0
-*xterm*color0:  #101010
-*xterm*color1:  #960050
-*xterm*color2:  #66aa11
-*xterm*color3:  #c47f2c
-*xterm*color4:  #30309b
-*xterm*color5:  #7e40a5
-*xterm*color6:  #3579a8
-*xterm*color7:  #9999aa
-*xterm*color8:  #303030
-*xterm*color9:  #ff0090
-*xterm*color10: #80ff00
-*xterm*color11: #ffba68
-*xterm*color12: #5f5fee
-*xterm*color13: #bb88dd
-*xterm*color14: #4eb4fa
-*xterm*color15: #d0d0d0
-! *xterm*colors: 16
-! *xterm*pairs: 256
-
-! xterm*faceName: Terminus
-xterm*faceName: Courier
-xterm*faceSize: 8
-xterm*borderWidth: 0
-xterm*VT100.showBlinkAsBold: true
 
 
 ! URxvt*termName:                       string
@@ -63,24 +35,88 @@ xterm*VT100.showBlinkAsBold: true
 ! URxvt*cursorUnderline:                boolean
 ! URxvt*cursorBlink:                    boolean
 ! URxvt*pointerBlank:                   boolean
-URxvt*background:                     #101010
-URxvt*foreground:                     #d0d0d0
-URxvt*color0:                         #101010
-URxvt*color1:                         #b60050
-URxvt*color2:                         #66aa11
-URxvt*color3:                         #c47f2c
-URxvt*color4:                         #30309b
-URxvt*color5:                         #7e40a5
-URxvt*color6:                         #3579a8
-URxvt*color7:                         #9999aa
-URxvt*color8:                         #303030
-URxvt*color9:                         #ff0090
-URxvt*color10:                        #80ff00
-URxvt*color11:                        #ffba68
-URxvt*color12:                        #5f5fee
-URxvt*color13:                        #bb88dd
-URxvt*color14:                        #4eb4fa
-URxvt*color15:                        #d0d0d0
+
+!URxvt*background:                     #101010
+!URxvt*foreground:                     #d0d0d0
+!URxvt*color0:                         #101010
+!URxvt*color1:                         #b60050
+!URxvt*color2:                         #66aa11
+!URxvt*color3:                         #c47f2c
+!URxvt*color4:                         #30309b
+!URxvt*color5:                         #7e40a5
+!URxvt*color6:                         #3579a8
+!URxvt*color7:                         #9999aa
+!URxvt*color8:                         #303030
+!URxvt*color9:                         #ff0090
+!URxvt*color10:                        #80ff00
+!URxvt*color11:                        #ffba68
+!URxvt*color12:                        #5f5fee
+!URxvt*color13:                        #bb88dd
+!URxvt*color14:                        #4eb4fa
+!URxvt*color15:                        #d0d0d0
+
+!BLK Cursor
+#define _color0        #000000
+#define _color8        #505050
+!RED Tag
+#define _color1        #a02020
+#define _color9        #d02020
+!GRN SpecialKey
+#define _color2        #20a020
+#define _color10       #20d020
+!YEL Keyword
+#define _color3        #a0a020
+#define _color11       #d0d020
+!BLU Number
+#define _color4        #2020a0
+#define _color12       #2020d0
+!MAG Precondit
+#define _color5        #a020a0
+#define _color13       #d020d0
+!CYN Float
+#define _color6        #20a0a0
+#define _color14       #20d0d0
+!WHT Search
+#define _color7        #a0a0a0
+#define _color15       #d0d0d0
+!FMT Include, StatusLine, ErrorMsg
+!#define _colorBD       #ffcfaf
+!#define _colorUL       #ccdc90
+!#define _colorIT       #80d4aa
+#define _colorBD       #ffffff
+#define _colorUL       #cccccc
+#define _colorIT       #888888
+
+!TXT Normal, Normal, Cursor
+#define _foreground    #dcdccc
+#define _background    #000000
+#define _cursorColor   #8faf9f
+URxvt*color0         : _color0
+URxvt*color1         : _color1
+URxvt*color2         : _color2
+URxvt*color3         : _color3
+URxvt*color4         : _color4
+URxvt*color5         : _color5
+URxvt*color6         : _color6
+URxvt*color7         : _color7
+URxvt*color8         : _color8
+URxvt*color9         : _color9
+URxvt*color10        : _color10
+URxvt*color11        : _color11
+URxvt*color12        : _color12
+URxvt*color13        : _color13
+URxvt*color14        : _color14
+URxvt*color15        : _color15
+URxvt*colorBD        : _colorBD
+URxvt*colorIT        : _colorIT
+URxvt*colorUL        : _colorUL
+URxvt*foreground     : _foreground
+URxvt*background     : _background
+URxvt*cursorColor    : _cursorColor
+URxvt.scrollBar_right : true
+URxvt.scrollstyle    : plain
+URxvt.scrollColor    : #222222
+
 ! URxvt*colorBD:                        color
 ! URxvt*colorIT:                        color
 ! URxvt*colorUL:                        color
@@ -90,14 +126,15 @@ URxvt*color15:                        #d0d0d0
 ! URxvt*troughColor:                    color
 ! URxvt*highlightColor:                 color
 ! URxvt*highlightTextColor:             color
-URxvt*cursorColor:                    #d0d0d0
+!URxvt*cursorColor:                    #d0d0d0
 ! URxvt*cursorColor2:                   color
 ! URxvt*pointerColor:                   color
 ! URxvt*pointerColor2:                  color
 ! URxvt*borderColor:                    color
 ! URxvt*iconFile:                       file
+URxvt*font:                           6x13
 ! URxvt*font:                           xft:DejaVu Sans Mono Condensed:pixelsize=8:antialias=true:hinting=slight
-! URxvt*font:                           xft:Inconsolata:style=Semibold:pixelsize=10:antialias=true:hinting=true
+! URxvt*font:                           xft:Inconsolata:style=Semibold:pixelsize=10:antialias=false:hinting=true
 ! URxvt*boldFont:                       xft:Inconsolata:style=bold:pixelsize=10:antialias=true:hinting=true
 ! URxvt*italicFont:                     fontname
 ! URxvt*boldItalicFont:                 fontname

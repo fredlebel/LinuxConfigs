@@ -4,6 +4,6 @@ set expandtab
 set number
 set backspace=2
 set linebreak
-setlocal spell spelllang=en_ca
+" setlocal spell spelllang=en_ca
 syntax on
 colo jellybeans

@@ -7,8 +7,13 @@ Config {-- font = "-misc-fixed-*-*-*-*-13-*-*-*-*-*-*-*"
        , lowerOnStart = True
        , commands = [
                     Run Com "xmobar-moc-status" [] "music" 10
+                   , Run Com "xmobar-net-status" [] "net" 100
+                   , Run Com "xmobar-wallpaper-status" [] "wallpaper" 1000
+                 -- , Run Com "xclip" ["-o"] "clipboard" 10
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "}{ <action=mocp --previous><<</action> <action=mocp --toggle-pause> %music% </action> <action=mocp --next>>></action> "
+       , template = "%wallpaper% | %net% }{ <action=`mocp --jump 0s`>@</action> <action=`mocp --previous`><<</action> <action=`mocp --toggle-pause`> %music% </action> <action=mocp --next>>></action> "
+       --, template = "%net% } clip:[<fc=#444444>%clipboard%</fc>] { <action=`mocp --jump 0s`>@</action>  <action=`mocp --previous`><<</action> <action=`mocp --toggle-pause`> %music% </action> <action=mocp --next>>></action> "
        }
+

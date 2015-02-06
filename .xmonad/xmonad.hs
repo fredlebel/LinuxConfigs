@@ -14,6 +14,8 @@ import System.Exit
 import XMonad.Layout.Spacing
 import XMonad.Prompt
 import XMonad.Prompt.RunOrRaise
+import XMonad.Prompt.Shell
+import XMonad.Prompt.Theme
 import XMonad.Util.Themes
 import XMonad.Layout.Decoration
 import XMonad.Layout.DecorationMadness
@@ -40,7 +42,7 @@ myClickJustFocuses = False
 
 -- Width of the window border in pixels.
 --
-myBorderWidth   = 4
+myBorderWidth   = 3
 
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt").  You may also consider using mod3Mask
@@ -62,8 +64,11 @@ myWorkspaces    = ["1-code","2-www","3-terms","4-misc", "5-irc"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
-myNormalBorderColor  = "#dddddd"
-myFocusedBorderColor = "#ffff00"
+--myNormalBorderColor  = "#888888"
+--myFocusedBorderColor = "#ffff88"
+
+myNormalBorderColor  = "#333333"
+myFocusedBorderColor = "#4c7899"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -81,13 +86,16 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- launch gmrun
     --, ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
-    , ((modm .|. shiftMask, xK_p     ), runOrRaisePrompt defaultXPConfig)
+    --, ((modm, xK_r     ), runOrRaisePrompt defaultXPConfig)
+    , ((modm, xK_r     ), shellPrompt defaultXPConfig)
 
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
 
      -- Rotate through the available layout algorithms
     , ((modm,               xK_space ), sendMessage NextLayout)
+
+    , ((modm .|. controlMask, xK_t), themePrompt defaultXPConfig)
 
     --  Reset the layouts on the current workspace to default
     , ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
@@ -97,6 +105,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Move focus to the next window
     , ((modm,               xK_Tab   ), windows W.focusDown)
+    -- Move focus to the previous window
+    , ((modm .|. shiftMask, xK_Tab   ), windows W.focusUp)
 
     -- Move focus to the next window
     , ((modm,               xK_j     ), windows W.focusDown)
@@ -112,14 +122,18 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Swap the focused window with the next window
     , ((modm .|. shiftMask, xK_j     ), windows W.swapDown  )
+    , ((modm .|. shiftMask, xK_Right     ), windows W.swapDown  )
 
     -- Swap the focused window with the previous window
     , ((modm .|. shiftMask, xK_k     ), windows W.swapUp    )
+    , ((modm .|. shiftMask, xK_Left     ), windows W.swapUp    )
 
     -- Shrink the master area
+    , ((modm .|. shiftMask .|. controlMask,  xK_Left     ), sendMessage Shrink)
     , ((modm,               xK_h     ), sendMessage Shrink)
 
     -- Expand the master area
+    , ((modm .|. shiftMask .|. controlMask,  xK_Right     ), sendMessage Expand)
     , ((modm,               xK_l     ), sendMessage Expand)
 
     -- Push window back into tiling
@@ -141,7 +155,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
 
     -- Restart xmonad
-    , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
+    --, ((modm              , xK_q     ), spawn "pkill xmobar; xmonad --recompile; xmonad --restart")
+    , ((modm              , xK_q     ), spawn "pkill xmobar; xmonad --restart")
 
     -- Run xmessage with a summary of the default keybindings (useful for beginners)
     , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
@@ -155,15 +170,15 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [((m .|. modm, k), windows $ f i)
         | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
-    ++
+    -- ++
 
     --
     -- mod-{w,e,r}, Switch to physical/Xinerama screens 1, 2, or 3
     -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
     --
-    [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
-        , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+    --[((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
+    --    | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
+    --    , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 
 ------------------------------------------------------------------------
@@ -212,10 +227,12 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 
 myDecoratedLayout = (tiled ||| mirrorTiled)
     where
-        tiled = decoration s t (Simple True) tall
-        mirrorTiled = decoration s t (Simple True) (Mirror tall)
-        s = shrinkText
-        t = theme kavonLakeTheme
+        tiled = tall
+        mirrorTiled = Mirror tall
+        --tiled' = decoration s t (Simple True) tall
+        --mirrorTiled' = decoration s t (Simple True) (Mirror tall)
+        --s = shrinkText
+        --t = theme wfarrTheme --kavonLakeTheme
         --tall = spacing 8 (XMonad.Tall 1 (3/100) (1/2))
         tall = spacing 8 (ThreeColMid 1 (3/100) (1/3))
 
@@ -276,7 +293,8 @@ myStartupHook = return ()
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 --main = xmonad =<< xmobar defaults
-main = xmonad =<< xmobar  =<< statusBar "xmobar ~/.xmobarrc_bottom" xmobarPP toggleStrutsKey defaults
+main = xmonad =<< statusBar "xmobar ~/.xmobarrc_bottom" xmobarPP toggleStrutsKey =<< xmobar defaults
+--main = xmonad =<< xmobar defaults
 
 -- |
 -- Helper function which provides ToggleStruts keybinding

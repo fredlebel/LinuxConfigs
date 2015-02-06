@@ -1,0 +1,18 @@
+#! /usr/bin/env bash
+#
+wallpapers="black:B:#808080 white:W:#ffffff g1:G:#4040ff g2:G:#ff4080 grass:GR:#20ff20"
+
+template="( "
+
+for wp in $wallpapers; do
+    wp_fields=(${wp//:/ })
+    wp_file=${wp_fields[0]}
+    wp_name=${wp_fields[1]}
+    wp_color=${wp_fields[2]}
+    template="$template <action=\`feh --bg-scale ~/Wallpapers/$wp_file\`><fc=$wp_color>$wp_name</fc></action>"
+done
+
+template="$template )"
+
+echo $template
+

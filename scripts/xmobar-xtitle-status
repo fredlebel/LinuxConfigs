@@ -1,0 +1,8 @@
+#! /usr/bin/env bash
+#
+
+TEXTCOL="#ffffff"     # The colour to be used for the text
+
+TEXT=$(xtitle)
+
+echo "<fc=$TEXTCOL>$TEXT</fc>"

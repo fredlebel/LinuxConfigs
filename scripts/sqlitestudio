@@ -1,0 +1,4 @@
+#!/bin/sh
+
+wine ~/.wine/drive_c/Apps/sqlitestudio/sqlitestudio-2.1.5.exe
+
