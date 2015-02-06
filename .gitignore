@@ -7,6 +7,12 @@
 .xmonad/history
 .vim/.netrwhist
 .vim/spell/en.utf-8.add.spl
+.vifm/Trash
+.vifm/colors
+.vifm/vifm-help.txt
+.vifm/vifminfo
+.vifm/vifminfo.bak
+.vifm/vifmrc.bak
 .config/Atom
 .config/Atom-Shell
 .config/chromium
