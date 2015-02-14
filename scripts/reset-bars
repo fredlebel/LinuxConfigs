@@ -1,0 +1,6 @@
+#!/bin/sh
+
+pkill xmobar
+xmobar ~/.xmobarrc        -d &> /dev/null &
+xmobar ~/.xmobarrc_bottom -d &> /dev/null &
+

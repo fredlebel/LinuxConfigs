@@ -4,6 +4,7 @@ Config {-- font = "-misc-fixed-*-*-*-*-13-*-*-*-*-*-*-*"
        , bgColor = "black"
        , fgColor = "grey"
        , position = Bottom
+       , iconRoot = "/home/fred/.icons/sm4tik-icon-pack/xbm"
        , lowerOnStart = True
        , commands = [
                     Run Com "xmobar-moc-status" [] "music" 10
@@ -13,7 +14,6 @@ Config {-- font = "-misc-fixed-*-*-*-*-13-*-*-*-*-*-*-*"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%wallpaper% | %net% }{ <action=`mocp --jump 0s`>@</action> <action=`mocp --previous`><<</action> <action=`mocp --toggle-pause`> %music% </action> <action=mocp --next>>></action> "
-       --, template = "%net% } clip:[<fc=#444444>%clipboard%</fc>] { <action=`mocp --jump 0s`>@</action>  <action=`mocp --previous`><<</action> <action=`mocp --toggle-pause`> %music% </action> <action=mocp --next>>></action> "
+       , template = "%wallpaper% | %net% }{ %music% "
        }
 

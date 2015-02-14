@@ -6,15 +6,35 @@
 # Note: if MPD isn't playing some errors will be written to STDERR; don't worry - xmobar only looks at STDOUT
 
 TCOL="cyan"         # The colour to be used to draw the song title when playing
-ACOL="lightblue"    # The colour to be used to draw the song artist when playing
+ACOL="#80ff80"      # The colour to be used to draw the song artist when playing
 PCOL="#ff4444"      # The colour to be used to draw both the song title and artist when paused
+
+function mkIcon() {
+    echo "<icon=/home/fred/.icons/sm4tik-icon-pack/xbm/$1.xbm/>"
+}
+
+icon_note=$(mkIcon "note")
+icon_play=$(mkIcon "play")
+icon_pause=$(mkIcon "pause")
+icon_prev=$(mkIcon "prev")
+icon_next=$(mkIcon "next")
 
 MOCSTATE=$(mocp --info | head -n 1 | tail -c +8)
 
+music="$(mocp --info | tail -n +4 | head -n 1 | tail -c +9) - $(mocp --info | tail -n +5 | head -n 1 | tail -c +12)"
+
+# template="$icon_note <action=mocp --jump 0s>@</action> <action=mocp --previous>$icon_prev</action> <action=mocp --toggle-pause>"
+template="<fc=#FFFFFF>$icon_note</fc> <action=mocp --previous><fc=#FFFF00>$icon_prev</fc></action> <action=mocp --toggle-pause>"
+
 if [ $MOCSTATE == "PLAY" ]; then
   # MOC is playing
-  echo "<fc=$ACOL>► $(mocp --info | tail -n +4 | head -n 1 | tail -c +9)</fc> - <fc=$TCOL>$(mocp --info | tail -n +5 | head -n 1 | tail -c +12)</fc>"
+  template="$template <fc=$ACOL>$icon_play $music</fc>"
 elif [ $MOCSTATE == "PAUSE" ]; then
   # MOC is paused
-  echo "<fc=$PCOL>|| $(mocp --info | tail -n +4 | head -n 1 | tail -c +9) - $(mocp --info | tail -n +5 | head -n 1 | tail -c +12)</fc>"
+  template="$template <fc=$PCOL>$icon_pause $music</fc>"
 fi
+
+template="$template </action> <action=mocp --next><fc=#FFFF00>$icon_next</fc></action> "
+
+echo $template
+

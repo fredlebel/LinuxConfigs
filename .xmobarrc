@@ -4,8 +4,9 @@ Config { --font = "-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*"
        , fgColor = "grey"
        , position = Top
        , lowerOnStart = True
+       , iconRoot = "/home/fred/.icons/sm4tik-icon-pack/xbm"
        , commands = [
-                      Run Network "enp0s3" ["-L","0","-H","32","--normal","green","--high","#ff4444", "-t", "Net: <rx>K/<tx>K"] 10
+                      Run Network "enp0s3" ["-L","0","-H","32","--normal","green","--high","#ff4444", "-t", "Net: <rx>K<icon=net_down_03.xbm/> <tx>K<icon=net_up_03.xbm/>"] 10
                     , Run Cpu [    "-L","3","-H","80","-n","green","-h","#ff4444", "-b", "=", "-t", "Cpu: <bar>"]     10
                     , Run Memory [ "-L","0","-H","80","-n","green","-h","#ff4444", "-b", "=", "-t", "Mem: <usedbar>"] 10
                     , Run Swap [   "-L","3","-H","80","-n","green","-h","#ff4444", "-b", "=", "-t", "Swap: <usedratio>%"] 10

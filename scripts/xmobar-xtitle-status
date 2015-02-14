@@ -5,4 +5,12 @@ TEXTCOL="#ffffff"     # The colour to be used for the text
 
 TEXT=$(xtitle)
 
+# Replace escape sequences.
+TEXT=${TEXT//</\{}
+TEXT=${TEXT//>/\}}
+len=${#TEXT}
+if [ $len -gt 50 ]; then
+    TEXT="${TEXT:0:50}..."
+fi
+
 echo "<fc=$TEXTCOL>$TEXT</fc>"

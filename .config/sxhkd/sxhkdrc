@@ -48,8 +48,8 @@ super + ctrl + {Left,Down,Up,Right,Delete}
 	bspc window -p {left,down,up,right,cancel}
 
 # Move window into presel position
-alt + shift {a,s,d,f}
-	bspc window -w {left.manual,down.manual,up.manual,right.manual}
+super + ctrl + Return
+    bspc window -w last.manual
 
 # Select windows, or move
 super + {_,shift + }{Left,Down,Up,Right}
