@@ -24,7 +24,7 @@ function my_git_prompt_info() {
 
 PROMPT="
 ┌─${path_p}-${ret_status}-${time}
-└─${prompt_box} "
+└─${user_host}-${prompt_box} "
 
 RPROMPT='$(my_git_prompt_info) $(cabal_sandbox_info)'
 
