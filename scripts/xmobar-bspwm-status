@@ -60,7 +60,7 @@ case $line in
                     ;;
                 L*)
                     # layout
-                    wm_infos="$wm_infos       <fc=#38ACEC>(${item#?})</fc>"
+                    #wm_infos="$wm_infos       <fc=#38ACEC>(${item#?})</fc>"
                     ;;
             esac
             shift

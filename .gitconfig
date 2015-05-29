@@ -3,3 +3,4 @@
 	email = frederic.lebel@gmail.com
 [push]
 	default = simple
+[http]

@@ -5,16 +5,15 @@ if [ $UID -eq 0 ]; then NCOLOR="red"; else NCOLOR="white"; fi
 
 #autoload -U colors && colors
 
-local blue_op="%{$fg[green]%}(%{$reset_color%}"
-local blue_cp="%{$fg[green]%}%)%{$reset_color%}"
-local path_p='${blue_op}%{$fg[white]%}%{%U%}${PWD/#$HOME/~}%{%u%}%{$reset_color%}${blue_cp}'
+local blue_op="%F{green}(%f"
+local blue_cp="%F{green})%f"
+local path_p='${blue_op}%F{white}%U${PWD/#$HOME/~}%{%u%}%f${blue_cp}'
 local user_host="${blue_op}%n@%m${blue_cp}"
 #local ret_status="${blue_op}%?${blue_cp}"
-local ret_status="${blue_op}%(?,%{$fg_bold[green]%}%?%{$reset_color%},%{$fg_bold[red]%}%?%{$reset_color%})${blue_cp}"
+local ret_status="${blue_op}%(?,%{$fg_bold[green]%}%?%f%b,%{$fg_bold[red]%}%?%f%b)${blue_cp}"
 local time="${blue_op}%D %*${blue_cp}"
 local hist_no="${blue_op}%h${blue_cp}"
-local smiley="%(?,%{$fg[green]%}:%)%{$reset_color%},%{$fg[red]%}:(%{$reset_color%})"
-local prompt_box="${blue_op}%{$fg[white]%}%#%{$reset_color%}${blue_cp}"
+local prompt_box="${blue_op}%F{white}%#%f${blue_cp}"
 
 function my_git_prompt_info() {
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return
@@ -23,24 +22,10 @@ function my_git_prompt_info() {
     echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$GIT_STATUS$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
-function cabal_sandbox_info() {
-    cabal_files=(*.cabal(N))
-    if [ $#cabal_files -gt 0 ]; then
-        if [ -f cabal.sandbox.config ]; then
-            echo "(%{$fg[green]%}sandboxed%{$reset_color%})"
-        else
-            echo "(%{$fg[red]%}not sandboxed%{$reset_color%})"
-        fi
-    fi
-}
-
 PROMPT="
 ┌─${path_p}-${ret_status}-${time}
 └─${prompt_box} "
 
-# prompt
-#PROMPT="╭─[%{$fg[$NCOLOR]%}%B%n%b%{$reset_color%}:%{$fg_bold[cyan]%}%30<...<%~%<<%{$reset_color%}]
-#╰─%(!.#.$) "
 RPROMPT='$(my_git_prompt_info) $(cabal_sandbox_info)'
 
 # git theming

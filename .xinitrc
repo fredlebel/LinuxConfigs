@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # /usr/bin/VBoxClient-all
 VBoxClient-all &
 xsetroot -cursor_name left_ptr
@@ -9,8 +11,9 @@ export EDITOR=vi
 #exec xmonad
 #exec awesome
 compton -c -o 1 -C -f -i 0.65 &
-sxhkd -f 100 &
+sxhkd -f 35 &
 xmobar .xmobarrc        -d &
 xmobar .xmobarrc_bottom -d &
+xrandr --output VBOX0 --auto --output VBOX1 --auto --right-of VBOX0
 exec bspwm
 

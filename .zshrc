@@ -26,7 +26,7 @@ ZSH_THEME="fred"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -45,7 +45,7 @@ ZSH_THEME="fred"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting)
+plugins=(git cabal themes tmux zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -79,13 +79,17 @@ export LANG=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias ls='ls --color=auto'
-alias ll='ls -l --color'
+alias ls='ls --color=auto -p'
+alias ll='ls -l --color -h'
 alias la='ls -a --color'
+alias l='ls -la --color -h'
+alias lb='lsblk -o NAME,SIZE,TYPE,MOUNTPOINT,MODEL'
 alias vi=vim
 alias hoogle='hoogle --color'
 alias path='echo $PATH | tr ":" "\n"'
-alias nix-find='nix-env -qa \* | grep -i '
-alias wallpaper='feh --bg-scale '
+alias nix-find='nix-env -qa \* | grep -i'
+alias wp='feh --bg-fill'
+alias mount_shares='sudo mount -t vboxsf X_DRIVE /media/sf_X_DRIVE'
+alias mount4me="sudo mount -o umask=077,gid=100,uid=1000"
 export LIBRARY_PATH=~/.nix-profile/lib/
 export C_INCLUDE_PATH=~/.nix-profile/include/

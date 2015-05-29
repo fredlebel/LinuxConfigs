@@ -1,0 +1,16 @@
+#! /usr/bin/env bash
+#
+
+PRIVATE="/dev/mapper/private"
+
+
+TEST=$(df $PRIVATE)
+
+if [ $? -eq 0 ]
+then
+  AVAIL=$(df $PRIVATE -h --output=avail | tail -n 1 | tr -d ' ')
+  echo "Priv: <fc=#ff8888>$AVAIL</fc>"
+else
+  echo "Priv: <fc=#ff8888>N/A</fc>"
+fi
+

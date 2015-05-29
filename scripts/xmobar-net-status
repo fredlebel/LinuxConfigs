@@ -5,4 +5,4 @@ IPCOL="#ffff44"     # The colour to be used to draw the ip addresses
 
 IP=$(ip addr show enp0s3 | grep global | grep -P '\d+\.\d+\.\d+\.\d+' -o | head -n 1)
 
-echo "ip:<fc=$IPCOL>$IP</fc>"
+echo "IP:<fc=$IPCOL>$IP</fc>"

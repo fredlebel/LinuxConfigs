@@ -1,0 +1,5 @@
+#!/bin/sh
+
+umount /home/fred/private
+cryptsetup luksClose private
+

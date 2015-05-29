@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cryptsetup luksOpen /dev/sdb1 private
+mount /dev/mapper/private /home/fred/private 
+
