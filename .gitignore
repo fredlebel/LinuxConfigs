@@ -23,7 +23,6 @@
 .config/meld
 .config/menus
 .config/pulse
-.config/fontconfig
 .config/terminator
 .config/vlc
 .config/xfe
