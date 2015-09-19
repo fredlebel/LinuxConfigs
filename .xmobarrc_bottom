@@ -9,7 +9,7 @@ Config {-- font = "-misc-fixed-*-*-*-*-13-*-*-*-*-*-*-*"
        , commands = [
                     Run Com "xmobar-moc-status" [] "music" 10
                    , Run Com "xmobar-net-status" [] "net" 100
-                   , Run Com "xmobar-wallpaper-status" [] "wallpaper" 1000
+                   , Run Com "xmobar-wallpaper-status" [] "wallpaper" 10
                  -- , Run Com "xclip" ["-o"] "clipboard" 10
                     ]
        , sepChar = "%"

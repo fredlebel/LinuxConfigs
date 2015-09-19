@@ -23,7 +23,6 @@ MOCSTATE=$(mocp --info | head -n 1 | tail -c +8)
 
 music="$(mocp --info | tail -n +4 | head -n 1 | tail -c +9) - $(mocp --info | tail -n +5 | head -n 1 | tail -c +12)"
 
-# template="$icon_note <action=mocp --jump 0s>@</action> <action=mocp --previous>$icon_prev</action> <action=mocp --toggle-pause>"
 template="<fc=#FFFFFF>$icon_note</fc> <action=mocp --previous><fc=#FFFF00>$icon_prev</fc></action> <action=mocp --toggle-pause>"
 
 if [ $MOCSTATE == "PLAY" ]; then
@@ -35,6 +34,19 @@ elif [ $MOCSTATE == "PAUSE" ]; then
 fi
 
 template="$template </action> <action=mocp --next><fc=#FFFF00>$icon_next</fc></action> "
+
+music_name="$(mpc current)"
+music_progress="$(mpc | head -n 2 | tail -n 1)"
+music_state="$(mpc | head -n 2 | tail -n 1 | cut -d '[' -f2 | cut -d ']' -f1)"
+if true; then
+  template="<fc=#FFFFFF>$icon_note</fc> <action=mpc prev><fc=#00FFFF>$icon_prev</fc></action> <action=mpc toggle>"
+  if [ $music_state == "playing" ]; then
+    template="$template <fc=#FFFF00>$music_name</fc> | <fc=#80FF80>$music_progress</fc>"
+  elif [ $music_state == "paused" ]; then
+    template="$template <fc=#888888>$music_name</fc> | <fc=#888888>$music_progress</fc>"
+  fi
+  template="$template </action> <action=mpc next><fc=#00FFFF>$icon_next</fc></action> "
+fi
 
 echo $template
 

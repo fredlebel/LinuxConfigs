@@ -24,6 +24,10 @@ set clipboard=unnamed
 let g:pathogen_disabled = ['airline']
 execute pathogen#infect()
 
+if (exists('+colorcolumn'))
+    set colorcolumn=80
+    highlight ColorColumn ctermbg=9
+endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Maintainer:
 "       Amir Salihefendic

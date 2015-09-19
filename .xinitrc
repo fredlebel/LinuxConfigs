@@ -10,10 +10,12 @@ sh ~/.fehbg &
 export EDITOR=vi
 #exec xmonad
 #exec awesome
-compton -c -o 1 -C -f -i 0.65 &
+#compton -c -o 1 -C -f -i 0.65 &
+compton -c -o 1 -C -f &
 sxhkd -f 35 &
 xmobar .xmobarrc        -d &
 xmobar .xmobarrc_bottom -d &
-xrandr --output VBOX0 --auto --output VBOX1 --auto --right-of VBOX0
+#xrandr --output "VGA-0" --auto --output "VGA-1" --auto --right-of "VGA-0"
+mpd
 exec bspwm
 

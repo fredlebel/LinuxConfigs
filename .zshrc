@@ -88,8 +88,10 @@ alias vi=vim
 alias hoogle='hoogle --color'
 alias path='echo $PATH | tr ":" "\n"'
 alias nix-find='nix-env -qa \* | grep -i'
+#alias nix-status='nix-env -u --dry-run 2>&1 | grep upgrading'
+alias nix-status='nix-env -qsc | grep "^[^=]*$"'
 alias wp='feh --bg-fill'
 alias mount_shares='sudo mount -t vboxsf X_DRIVE /media/sf_X_DRIVE'
-alias mount4me="sudo mount -o umask=077,gid=100,uid=1000"
+alias mps-youtube='mpsyt'
 export LIBRARY_PATH=~/.nix-profile/lib/
 export C_INCLUDE_PATH=~/.nix-profile/include/

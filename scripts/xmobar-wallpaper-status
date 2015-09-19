@@ -1,18 +1,16 @@
 #! /usr/bin/env bash
 #
-wallpapers="black:B:#808080 white:W:#ffffff g1:G:#4040ff g2:G:#ff4080 grass:GR:#20ff20"
 
-template="( "
+template="Wallpapers: ["
 
-for wp in $wallpapers; do
-    wp_fields=(${wp//:/ })
-    wp_file=${wp_fields[0]}
-    wp_name=${wp_fields[1]}
-    wp_color=${wp_fields[2]}
-    template="$template <action=\`feh --bg-scale ~/Wallpapers/$wp_file\`><fc=$wp_color>$wp_name</fc></action>"
-done
+template="$template<action=\`feh --bg-fill '$(ls -d ~/Wallpapers/Gradients/* | sort -R | tail -1)'\`><fc=white>grad</fc></action>, "
+template="$template<action=\`feh --bg-fill '$(ls -d ~/Wallpapers/Abstract/* | sort -R | tail -1)'\`><fc=white>abs</fc></action>, "
+template="$template<action=\`feh --bg-fill '$(ls -d ~/Wallpapers/Landscapes/* | sort -R | tail -1)'\`><fc=white>land</fc></action>, "
+template="$template<action=\`feh --bg-fill '$(ls -d ~/Wallpapers/SciFi/* | sort -R | tail -1)'\`><fc=white>sci</fc></action>, "
+template="$template<action=\`feh --bg-fill '$(ls -d ~/Wallpapers/Closeups/* | sort -R | tail -1)'\`><fc=white>close</fc></action>, "
+template="$template<action=\`feh --bg-fill '$(ls -d ~/Wallpapers/Art/* | sort -R | tail -1)'\`><fc=white>art</fc></action>"
 
-template="$template )"
+template="$template]"
 
 echo $template
 
