@@ -8,6 +8,7 @@ template="$template<action=\`feh --bg-fill '$(ls -d ~/Wallpapers/Abstract/* | so
 template="$template<action=\`feh --bg-fill '$(ls -d ~/Wallpapers/Landscapes/* | sort -R | tail -1)'\`><fc=white>land</fc></action>, "
 template="$template<action=\`feh --bg-fill '$(ls -d ~/Wallpapers/SciFi/* | sort -R | tail -1)'\`><fc=white>sci</fc></action>, "
 template="$template<action=\`feh --bg-fill '$(ls -d ~/Wallpapers/Closeups/* | sort -R | tail -1)'\`><fc=white>close</fc></action>, "
+template="$template<action=\`feh --bg-fill '$(ls -d ~/Wallpapers/Pix/* | sort -R | tail -1)'\`><fc=white>pix</fc></action>, "
 template="$template<action=\`feh --bg-fill '$(ls -d ~/Wallpapers/Art/* | sort -R | tail -1)'\`><fc=white>art</fc></action>"
 
 template="$template]"
