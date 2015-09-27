@@ -101,7 +101,7 @@ Swap() {
 Disk() {
     diskUsage=$(df $1 | tail -n1 | awk '{printf "%.0f", 100-$4/$2*100}')
     readableFree=$(df -h $1 | tail -n1 | awk '{print $4}')
-    if (( diskUsage > 80 )); then
+    if (( diskUsage > 90 )); then
         echo "$2: %{F#ff4444}$diskUsage%% $readableFree%{F-}"
     else
         echo "$2: %{F#00ff00}$diskUsage%% $readableFree%{F-}"
@@ -116,10 +116,10 @@ Net() {
     net_2=$(Net_)
     netRx=$(cat <(echo $1) <(echo $net_2) | awk -v RS="" '{printf "%sK", int(($3-$1)/1000)}')
     netTx=$(cat <(echo $1) <(echo $net_2) | awk -v RS="" '{printf "%sK", int(($4-$2)/1000)}')
-    #networkUsage=$(cat <(echo $1) <(echo $(Net_)) | awk -v RS="" '{printf "%s/%s", $3-$1, $4-$2}')
-    #networkUsage="Rx $(Human $netRx) / Tx $(Human $netTx)"
-    networkUsage="Net: %{F#00ff00}$netRx%{F-}/%{F#00ff00}$netTx%{F-}"
-    echo $networkUsage
+    networkUsage="%{F#00ff00}$netRx%{F-}/%{F#00ff00}$netTx%{F-}"
+    # Used to minimize shifting in bar.
+    paddedLength=$(echo $((${#networkUsage} - ${#netRx} - ${#netTx} + 5))s)
+    printf "Net: %$paddedLength" "$networkUsage"
 }
 
 Bspwm() {
