@@ -34,7 +34,7 @@ Wallpaper() {
 
 CurrentIp() {
     IP=$(ip addr show | grep global | grep -P '\d+\.\d+\.\d+\.\d+' -o | head -n 1)
-    echo "IP:%{F#ffff22}$IP%{F-}"
+    echo "%{F#ffff22}$IP%{F-}"
 }
 
 MusicStatus() {
@@ -120,6 +120,48 @@ Net() {
     # Used to minimize shifting in bar.
     paddedLength=$(echo $((${#networkUsage} - ${#netRx} - ${#netTx} + 5))s)
     printf "Net: %$paddedLength" "$networkUsage"
+}
+
+Ssid() {
+    ssid=$(iwgetid | cut -d'"' -f2)
+    if [ -n "$ssid" ]; then
+        echo "((%{F#00ff00}$ssid%{F-}))"
+    else
+        echo "((%{F#ff4444}No wifi%{F-}))"
+    fi
+}
+
+Battery() {
+    capacity=$(cat /sys/class/power_supply/BAT0/capacity)
+    if (( capacity < 15 )); then
+        echo "Battery: %{F#ff4444}$capacity%%%{F-}"
+    else
+        echo "Battery: %{F#00ff00}$capacity%%%{F-}"
+    fi
+}
+
+Power() {
+    power=$(cat /sys/class/power_supply/BAT0/power_now | awk '{printf "%.1f", ($1 / 1000000)}')
+    if (( power > 10 )); then
+        echo "%{F#ff4444}$power%{F-} W"
+    else
+        echo "%{F#00ff00}$power%{F-} W"
+    fi
+}
+
+Temp() {
+    temp=$(cat /sys/class/thermal/thermal_zone0/temp)
+    temp=$(( temp / 1000 ))
+    if (( temp > 56 )); then
+        echo "Temp: %{F#ff4444}$temp%%%{F-}"
+    else
+        echo "Temp: %{F#00ff00}$temp%%%{F-}"
+    fi
+}
+
+Brightness() {
+    val=$(xbacklight | awk '{print int($1)}')
+    echo "Brightness: %{F#00ff00}$val%{F-}%%"
 }
 
 Bspwm() {

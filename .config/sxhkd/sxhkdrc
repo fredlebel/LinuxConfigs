@@ -56,10 +56,10 @@ super + {_,shift + }{Left,Down,Up,Right}
 	bspc window -{f,s} {left,down,up,right} || bspc window -f {prev, prev, next, next}
 
 # Resize nodes
-#alt + {a,f}
-#	$HOME/scripts/window_move.sh {-p,-n} -x -s 20
-#alt + {s,d}
-#	$HOME/scripts/window_move.sh {-p,-n} -y -s 20
+super + {a,s,w,d}
+    bspc window -e {left -10,down +10,up -10,right +10}
+super + shift + {a,s,w,d}
+    bspc window -e {left +10,down -10,up +10,right -10}
 
 # Move floating windows (requires baskerville's xdo)
 #alt + {Left,Right,Up,Down}
@@ -158,11 +158,17 @@ super + shift + Return
     termite
 #	urxvt 
 
-super + w
+super + z
+    touchpad_toggle.sh
+
+super + shift + w
     chromium
 
 super + r
     dmenu_run -b -i -p "Run:" -nb "#FFF" -nf "#000" -sb "#FF0" -sf "#000"
+
+super + alt + {Up,Down}
+    xbacklight {-inc, -dec} 10
 
 Print
 	scrot -q 100
