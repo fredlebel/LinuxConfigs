@@ -4,6 +4,7 @@ pkill xmobar
 #xmobar ~/.xmobarrc        -d &> /dev/null &
 #xmobar ~/.xmobarrc_bottom -d &> /dev/null &
 pkill lemonbar
+#~/scripts/bar_top.sh | lemonbar -p -f "Fixedsys Excelsior 3.01:size=12" | sh &
 ~/scripts/bar_top.sh | lemonbar -p | sh &
 ~/scripts/bar_bottom.sh | lemonbar -p -b | sh &
 

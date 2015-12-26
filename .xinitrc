@@ -13,8 +13,9 @@ export EDITOR=vi
 #compton -c -o 1 -C -f -i 0.65 &
 compton -c -o 1 -C -f &
 sxhkd -f 35 &
-xmobar .xmobarrc        -d &
-xmobar .xmobarrc_bottom -d &
+reset-bars
+#xmobar .xmobarrc        -d &
+#xmobar .xmobarrc_bottom -d &
 #xrandr --output "VGA-0" --auto --output "VGA-1" --auto --right-of "VGA-0"
 mpd
 exec bspwm

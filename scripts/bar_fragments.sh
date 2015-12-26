@@ -164,6 +164,14 @@ Brightness() {
     echo "Brightness: %{F#00ff00}$val%{F-}%%"
 }
 
+DesktopClickerFull() {
+    echo "%{A:bspc desktop -f ^$1:}%{F$2}[$1]%{F-}%{A}"
+}
+
+DesktopClickerEmpty() {
+    echo "%{A:bspc desktop -f ^$1:}%{F$2}$1%{F-}%{A}"
+}
+
 Bspwm() {
     line=$(bspc control --get-status | tr ':' ' ')
 
@@ -196,11 +204,13 @@ Bspwm() {
                         ;;
                     O*)
                         # focused occupied desktop
-                        wm_infos="$wm_infos %{F#FFFF00}[$name]%{F-}"
+                        #wm_infos="$wm_infos %{F#FFFF00}[$name]%{F-}"
+                        wm_infos="$wm_infos $(DesktopClickerFull $name '#FFFF00')"
                         ;;
                     F*)
                         # focused free desktop
-                        wm_infos="$wm_infos %{F#FFFF00}$name%{F-}"
+                        #wm_infos="$wm_infos %{F#FFFF00}$name%{F-}"
+                        wm_infos="$wm_infos $(DesktopClickerEmpty $name '#FFFF00')"
                         ;;
                     U*)
                         # focused urgent desktop
@@ -208,11 +218,13 @@ Bspwm() {
                         ;;
                     o*)
                         # occupied desktop
-                        wm_infos="$wm_infos %{F#808080}[$name]%{F-}"
+                        #wm_infos="$wm_infos %{F#808080}[$name]%{F-}"
+                        wm_infos="$wm_infos $(DesktopClickerFull $name '#808080')"
                         ;;
                     f*)
                         # free desktop
-                        wm_infos="$wm_infos %{F#343434}$name%{F-}"
+                        #wm_infos="$wm_infos %{F#343434}$name%{F-}"
+                        wm_infos="$wm_infos $(DesktopClickerEmpty $name '#343434')"
                         ;;
                     u*)
                         # urgent desktop

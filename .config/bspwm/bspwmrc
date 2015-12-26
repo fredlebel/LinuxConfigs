@@ -49,6 +49,7 @@ bspc config focused_frame_opacity 0.1
 
 # Rules
 bspc rule -a Chromium floating=on manage=on
+bspc rule -a chromium-browser floating=on manage=on
 #bspc rule -a vlc floating=on manage=on
 bspc rule -a vlc floating=off manage=on
 #bspc rule -a Skype pseudo_tiled=on
