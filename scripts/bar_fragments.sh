@@ -109,7 +109,7 @@ Disk() {
 }
 
 Net_() {
-    ifconfig enp0s3 | grep packets | awk '{print $5}' | awk -v RS="" '{printf "%s %s", $1, $2}'
+    ifconfig wlp2s0 | grep packets | awk '{print $5}' | awk -v RS="" '{printf "%s %s", $1, $2}'
 }
 
 Net() {

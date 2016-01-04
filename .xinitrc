@@ -1,7 +1,11 @@
 #!/bin/sh
 
 # /usr/bin/VBoxClient-all
-VBoxClient-all &
+# VBoxClient-all &
+if [ -e $HOME/.profile ]
+then
+    . $HOME/.profile
+fi
 xsetroot -cursor_name left_ptr
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 # xcompmgr -n &

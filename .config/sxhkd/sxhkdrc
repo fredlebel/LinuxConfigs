@@ -54,6 +54,8 @@ super + ctrl + Return
 # Select windows, or move
 super + {_,shift + }{Left,Down,Up,Right}
 	bspc window -{f,s} {left,down,up,right} || bspc window -f {prev, prev, next, next}
+super + {_,shift + }{j,k,i,l}
+	bspc window -{f,s} {left,down,up,right} || bspc window -f {prev, prev, next, next}
 
 # Resize nodes
 super + {a,s,w,d}
@@ -82,8 +84,8 @@ super + shift + {comma,period}
 	bspc desktop -R {90,270}
 
 # Select previous / next desktop
-super + {j,k}
-	bspc desktop -f {prev.occupied,next.occupied} 
+#super + {j,k}
+#	bspc desktop -f {prev.occupied,next.occupied} 
 
 # Lock a window from closing
 #alt + Escape
