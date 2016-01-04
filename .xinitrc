@@ -1,7 +1,11 @@
 #!/bin/sh
 
 # /usr/bin/VBoxClient-all
-VBoxClient-all &
+# VBoxClient-all &
+if [ -e $HOME/.profile ]
+then
+    . $HOME/.profile
+fi
 xsetroot -cursor_name left_ptr
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 # xcompmgr -n &
@@ -11,7 +15,11 @@ export EDITOR=vi
 #exec xmonad
 #exec awesome
 #compton -c -o 1 -C -f -i 0.65 &
-compton -c -o 1 -C -f &
+if [ "$(hostname)" = nixos ]; then
+  compton -c -o 1 -C -f -b
+else
+  compton -c -o 1 -C -f --vsync drm -b
+fi
 sxhkd -f 35 &
 reset-bars
 #xmobar .xmobarrc        -d &

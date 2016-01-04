@@ -1,6 +1,6 @@
 #!/bin/sh
 
-bspc config border_width        3
+bspc config border_width         8
 bspc config window_gap          25
 
 #desktops="code,terms,web,bg,misc"
@@ -18,7 +18,7 @@ desktops1="1,2,3,4,5,6,7,8,9"
 #NMON=$i
 #unset i
 
-bspc monitor "VGA-0" -d `eval echo 1/{$desktops1}`
+bspc monitor "$(bspc query -M)" -d `eval echo 1/{$desktops1}`
 #bspc monitor "VGA-1" -d `eval echo 2/{$desktops2}`
 
 for desktop in $(bspc query -D); do

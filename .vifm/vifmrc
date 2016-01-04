@@ -99,6 +99,7 @@ set timefmt=\ %m/%d\ %H:%M
 
 :fileview */ tree -a -L 1 -C %c
 :fileview .*/ tree -a -L 1 -C %c
+:fileview *.jpg jp2a --colors
 :windo normal zo
 
 " For automated FUSE mounts, you must register an extension with FILETYPE=..
