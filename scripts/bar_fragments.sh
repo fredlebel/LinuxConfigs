@@ -109,11 +109,11 @@ Disk() {
 }
 
 Net_() {
-    ifconfig enp0s3 | grep packets | awk '{print $5}' | awk -v RS="" '{printf "%s %s", $1, $2}'
+    ifconfig $1 | grep packets | awk '{print $5}' | awk -v RS="" '{printf "%s %s", $1, $2}'
 }
 
 Net() {
-    net_2=$(Net_)
+    net_2=$(Net_ $2)
     netRx=$(cat <(echo $1) <(echo $net_2) | awk -v RS="" '{printf "%sK", int(($3-$1)/1000)}')
     netTx=$(cat <(echo $1) <(echo $net_2) | awk -v RS="" '{printf "%sK", int(($4-$2)/1000)}')
     networkUsage="%{F#00ff00}$netRx%{F-}/%{F#00ff00}$netTx%{F-}"
