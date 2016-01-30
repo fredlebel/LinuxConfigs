@@ -1,0 +1,1 @@
+/home/fred/LinuxConfigs/fred.zsh-theme
