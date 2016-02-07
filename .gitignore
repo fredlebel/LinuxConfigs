@@ -13,6 +13,7 @@
 .vifm/vifminfo
 .vifm/vifminfo.bak
 .vifm/vifmrc.bak
+.weechat/logs
 .config/Atom
 .config/Atom-Shell
 .config/chromium
@@ -26,4 +27,5 @@
 .config/terminator
 .config/vlc
 .config/xfe
+.config/ghb
 

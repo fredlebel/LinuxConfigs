@@ -34,7 +34,7 @@ Wallpaper() {
 
 CurrentIp() {
     IP=$(ip addr show | grep global | grep -P '\d+\.\d+\.\d+\.\d+' -o | head -n 1)
-    echo "%{F#ffff22}$IP%{F-}"
+    echo "%{F#ffffff}IP: %{F-}%{F#ffff22}$IP%{F-}"
 }
 
 MusicStatus() {
