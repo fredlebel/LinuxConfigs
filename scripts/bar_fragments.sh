@@ -150,12 +150,12 @@ Power() {
 }
 
 Temp() {
-    temp=$(cat /sys/class/thermal/thermal_zone0/temp)
+    temp=$(cat /sys/class/thermal/thermal_zone2/temp)
     temp=$(( temp / 1000 ))
     if (( temp > 56 )); then
-        echo "Temp: %{F#ff4444}$temp%%%{F-}"
+        echo "Temp: %{F#ff4444}$temp°%{F-}"
     else
-        echo "Temp: %{F#00ff00}$temp%%%{F-}"
+        echo "Temp: %{F#00ff00}$temp°%{F-}"
     fi
 }
 

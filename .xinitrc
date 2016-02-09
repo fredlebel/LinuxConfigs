@@ -25,6 +25,6 @@ reset-bars
 #xmobar .xmobarrc        -d &
 #xmobar .xmobarrc_bottom -d &
 #xrandr --output "VGA-0" --auto --output "VGA-1" --auto --right-of "VGA-0"
-mpd
+mpd &
 exec bspwm
 
