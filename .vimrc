@@ -17,7 +17,7 @@ set timeout timeoutlen=3000 ttimeoutlen=100
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
 set clipboard=unnamed
@@ -93,6 +93,10 @@ nnoremap <leader>\| <C-w>v
 nnoremap <leader>- <C-w>s
 " Focus on nerd tree
 nnoremap <leader>. :NERDTreeFocus<cr>
+
+nnoremap <leader>? :GhcModType<cr>
+nnoremap <leader>! :GhcModCheckAndLintAsync<cr>
+nnoremap <leader>o :CtrlPMixed<cr>
 
 " Fast cursorline
 nmap <leader>w :w!<cr>
@@ -238,10 +242,10 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 " Close the current buffer
-map <leader>bd :Bclose<cr>
+" map <leader>bd :Bclose<cr>
 
 " Close all the buffers
-map <leader>ba :1,1000 bd!<cr>
+" map <leader>ba :1,1000 bd!<cr>
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
