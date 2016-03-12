@@ -6,6 +6,28 @@ set splitright
 set cursorline
 set list
 set listchars=trail:~,tab:>-
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'tpope/vim-fugitive'
+Plugin 'eagletmt/ghcmod-vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'itchyny/lightline.vim'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'eagletmt/neco-ghc'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'xolox/vim-misc'
+Plugin 'shougo/vimproc.vim'
+call vundle#end()
+filetype plugin indent on
+
+
 
 nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
@@ -20,9 +42,9 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
-set clipboard=unnamed
-let g:pathogen_disabled = ['airline']
-execute pathogen#infect()
+"set clipboard=unnamed
+"let g:pathogen_disabled = ['airline']
+"execute pathogen#infect()
 
 if (exists('+colorcolumn'))
     set colorcolumn=80
