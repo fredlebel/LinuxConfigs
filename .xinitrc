@@ -16,9 +16,9 @@ export EDITOR=vi
 #exec awesome
 #compton -c -o 1 -C -f -i 0.65 &
 if [ "$(hostname)" = nixos ]; then
-  compton -c -o 1 -C -f -b
+  compton -c -o 1 -C -f -b --config ~/.config/compton.conf
 else
-  compton -c -o 1 -C -f --vsync drm -b
+  compton -c -o 1 -C -f --vsync drm -b --config ~/.config/compton.conf
 fi
 sxhkd -f 35 &
 reset-bars

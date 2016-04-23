@@ -20,90 +20,88 @@ super + shift + q
 #alt + x
 #	$HOME/scripts/tmux_purge
 
-# Close node
+# Close window
 super + shift + c
-	bspc node -c
+	bspc  window -c
 
-# Kill node
+# Kill window
 super + ctrl + shift + c
-	bspc node -k
+	bspc  window -k
+
+# Toggle tile
+#alt + {_,shift +} t
+#	bspc window -t {floating,fullscreen}
+super + t
+    bspc window -t floating
 
 # Lock node
 #alt + shift + p
-#	bspc node -t private
+#	bspc window -t private
 
 # Balance tree
 super + b
 	bspc desktop -B
 
-# Presel node for splitting
+# Presel window for splitting
 #alt + ctrl + {h,j,k,l}
 super + ctrl + {Left,Down,Up,Right,Delete}
-	bspc node -p {\~west,\~south,\~north,\~east,cancel}
+	bspc window -p {left,down,up,right,cancel}
 
-# Move node into presel position
+# Move window into presel position
 super + ctrl + Return
-    bspc node --to-node last.!automatic
+    bspc window -w last.manual
 
-# Select node, or move
+# Select windows, or move
 super + {_,shift + }{Left,Down,Up,Right}
-	bspc node -{f,s} {west,south,north,east} || bspc node -f {prev, prev, next, next}
+	bspc window -{f,s} {left,down,up,right} || bspc window -f {prev, prev, next, next}
 super + {_,shift + }{j,k,i,l}
-	bspc node -{f,s} {west,south,north,east} || bspc node -f {prev, prev, next, next}
+	bspc window -{f,s} {left,down,up,right} || bspc window -f {prev, prev, next, next}
 
 # Resize nodes
 super + {a,s,w,d}
-    bspc node {@west -r -10,@south -r +10,@north -r -10,@east -r +10}
+    bspc window -e {left -10,down +10,up -10,right +10}
 super + shift + {a,s,w,d}
-    bspc node {@west -r +10,@south -r -10,@north -r +10,@east -r -10}
+    bspc window -e {left +10,down -10,up +10,right -10}
 
-# Move floating node (requires baskerville's xdo)
+# Move floating windows (requires baskerville's xdo)
 #alt + {Left,Right,Up,Down}
 #    xdo move {-x -20,-x +20,-y -20,-y +20}
 
-# Resize floating node
+# Resize floating windows
 #alt + shift + {Left,Right,Up,Down}
-#    xdo resize {-w -20,-w +20,-h -20,-h +20}    bspc node -e {west -10,south +10,north -10,east +10} || {east -10,north +10,south -10,west +10}
+#    xdo resize {-w -20,-w +20,-h -20,-h +20}    bspc window -e {left -10,down +10,up -10,right +10} || {right -10,up +10,down -10,left +10}
 
-# Move current node to largest space
+# Move current window to largest space
 #alt + Return
-#	bspc node -s biggest
+#	bspc window -s biggest
 
 # Mirror and flip leaves of tree
 super + {comma,period}
-	bspc node @focused:/ -F {horizontal,vertical}
+	bspc desktop -F {horizontal,vertical}
 
 # Rotate leaves of tree
 super + shift + {comma,period}
-	bspc node @focused:/ -R {90,270}
+	bspc desktop -R {90,270}
 
 # Select previous / next desktop
 #super + {j,k}
 #	bspc desktop -f {prev.occupied,next.occupied} 
 
-# Lock a node from closing
+# Lock a window from closing
 #alt + Escape
-#	bspc node -t locked 
+#	bspc window -t locked 
 
 # Toggle monocle
 super + space 
 	bspc desktop -l next
 
-# Toggle floating
-super + f
-    bspc node -t \~floating
-
 # Toggle pseudotiled (floating in tile)
 super + p
-    bspc node -t \~pseudo_tiled
-
-# Toggle tiled
-super + t
-    bspc node -t \~tiled
+    bspc window -t pseudo_tiled
 
 # Focus on floating / tiled
 #alt + e
-#	bspc node -f {next.floating,next.tiled}
+#	bspc window -f {next.floating,next.tiled}
 
 # Change desktop padding
 super + bracketleft
@@ -125,24 +123,24 @@ super + bracketright
 #	bspc config -d focused top_padding $((`bspc config -d focused top_padding` {+,-} 20 ));
 
 
-# Change node gap
+# Change window gap
 super + {minus,equal}
 	bspc config -d focused window_gap $((`bspc config -d focused window_gap` {+,-} 2 ))
 
-# Set splitting ratio of node
+# Set splitting ratio of windows
 #alt + ctrl + {1-9}
-#	bspc node -r 0.{1-9}
+#	bspc window -r 0.{1-9}
 
-# Focus or move node to desktops
+# Focus or move window to desktops
 super + {_,shift + }{1-9,0}
-    bspc {desktop -f, node -d} ^{1-9,0}
-    #bspc {desktop -f, node -d} $(bspc query -M -m)/{code,terms,web,bg}
+    bspc {desktop -f, window -d} ^{1-9,0}
+    #bspc {desktop -f, window -d} $(bspc query -M -m)/{code,terms,web,bg}
 
 #
 # mouse bindings
 #
 
-# Move or resize node
+# Move or resize window
 super + button{1-3}
 	bspc pointer -g {move,resize_side,resize_corner}
 

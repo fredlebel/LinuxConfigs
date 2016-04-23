@@ -173,7 +173,7 @@ DesktopClickerEmpty() {
 }
 
 Bspwm() {
-    line=$(bspc control --get-status | tr ':' ' ')
+    line=$(bspc wm --get-status | tr ':' ' ')
 
     num_mon=1
 
