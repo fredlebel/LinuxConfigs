@@ -49,10 +49,10 @@ bspc config focused_frame_opacity 0.1
 
 
 # Rules
-bspc rule -a Chromium floating=on manage=on
-bspc rule -a chromium-browser floating=on manage=on
-#bspc rule -a vlc floating=on manage=on
-bspc rule -a vlc floating=off manage=on
+bspc rule -a Chromium state=floating manage=on
+bspc rule -a chromium-browser state=floating manage=on
+#bspc rule -a vlc state=floating manage=on
+bspc rule -a vlc state=floating manage=off
 #bspc rule -a Skype pseudo_tiled=on
 #bspc rule -a Spotify pseudo_tiled=on
 #bspc rule -a Thunar pseudo_tiled=on
@@ -61,6 +61,6 @@ bspc rule -a vlc floating=off manage=on
 #bspc rule -a Transmission-gtk pseudo_tiled=on
 #bspc rule -a Conky sticky=on manage=off lower=on
 #bspc rule -a astime sticky=on
-#bspc rule -a dmenu floating=on manage=off
+#bspc rule -a dmenu state=floating manage=off
 
 # /home/sunn/.config/bspwm/panel/panel &

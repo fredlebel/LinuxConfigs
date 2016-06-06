@@ -95,3 +95,4 @@ alias mount_shares='sudo mount -t vboxsf X_DRIVE /media/sf_X_DRIVE'
 alias mps-youtube='mpsyt'
 export LIBRARY_PATH=~/.nix-profile/lib/
 export C_INCLUDE_PATH=~/.nix-profile/include/
+export PATH=$HOME/scripts:$HOME/.cabal/bin:$PATH

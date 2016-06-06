@@ -1,5 +1,6 @@
-#! /usr/bin/env bash
+#! /usr/bin/env zsh
 #
+
 
 . bar_fragments.sh
 

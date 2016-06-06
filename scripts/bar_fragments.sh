@@ -1,17 +1,6 @@
 #! /usr/bin/env zsh
 #
 
-Human() {
-    echo $1 | awk '
-    function human(x) {
-        s="BkMGTEPYZ";
-        while (x>=1000 && length(s)>1)
-            {x/=1024; s=substr(s,2)}
-        return int(x+0.5) substr(s,1,1)
-    }
-    {sub(/^[0-9]+/, human($1)); print}'
-}
-
 RndWP() {
     echo "%{A:rnd_wallpaper.sh ~/Wallpapers/$1:}%{Fwhite}$2%{F-}%{A}"
 }
@@ -41,18 +30,25 @@ MusicStatus() {
   music_name="$(mpc current)"
   music_progress="$(mpc | head -n 2 | tail -n 1 | sed 's/%/%%/g')"
   music_state="$(mpc | head -n 2 | tail -n 1 | cut -d '[' -f2 | cut -d ']' -f1)"
-  if [ -n "$music_name" ]; then
-    template="%{A:mpc prev:}%{F#00FFFF} <|%{F-}%{A}"
+  if [[ -n "$music_name" ]]; then
+    template="%{A:mpc prev:}%{F#00FFFF}      <|%{F-}%{A}"
     template="$template %{A:mpc toggle:}"
-    if [ $music_state == "playing" ]; then
+    if [[ $music_state == "playing" ]]; then
       template="$template %{F#FFFF00}$music_name%{F-} | %{F#80FF80}$music_progress%{F-}"
-    elif [ $music_state == "paused" ]; then
+    elif [[ $music_state == "paused" ]]; then
       template="$template %{F#888888}$music_name%{F-} | %{F#888888}$music_progress%{F-}"
     fi
     template="$template %{A}%{A:mpc next:}%{F#00FFFF} |> %{F-}%{A} "
   else
     template="%{F#808080}no music%{F-}"
   fi
+  echo $template
+}
+
+VolumeStatus() {
+  masterP="$(amixer sget Master | sed -n "0,/.*\[\([0-9]\+\)%\].*/s//\1/p")"
+  pcmP="$(amixer sget PCM | sed -n "0,/.*\[\([0-9]\+\)%\].*/s//\1/p")"
+  template="Volume: %{F#00ff00}$masterP% $pcmP%%{F-}"
   echo $template
 }
 
@@ -68,9 +64,9 @@ Cpu_() {
 Cpu() {
     cpuVal=$(cat <(echo $1) <(echo $(Cpu_)) | awk -v RS="" '{printf("%.0f", ($13-$2+$15-$4)*100/($13-$2+$15-$4+$16-$5))}')
     if (( cpuVal > 75 )); then
-        echo "Cpu: %{F#ff4444}$cpuVal%%%{F-}"
+        echo "Cpu: %{F#ff4444}$cpuVal%%{F-}"
     else
-        echo "Cpu: %{F#00ff00}$cpuVal%%%{F-}"
+        echo " Cpu: %{F#00ff00}$cpuVal%%{F-}"
     fi
 }
 
@@ -102,9 +98,9 @@ Disk() {
     diskUsage=$(df $1 | tail -n1 | awk '{printf "%.0f", 100-$4/$2*100}')
     readableFree=$(df -h $1 | tail -n1 | awk '{print $4}')
     if (( diskUsage > 90 )); then
-        echo "$2: %{F#ff4444}$diskUsage%% $readableFree%{F-}"
+        echo "$2: %{F#ff4444}$diskUsage% $readableFree%{F-}"
     else
-        echo "$2: %{F#00ff00}$diskUsage%% $readableFree%{F-}"
+        echo "$2: %{F#00ff00}$diskUsage% $readableFree%{F-}"
     fi
 }
 
