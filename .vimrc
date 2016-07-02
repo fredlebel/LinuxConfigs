@@ -24,6 +24,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'xolox/vim-misc'
 Plugin 'shougo/vimproc.vim'
+Plugin 'fholgado/minibufexpl.vim'
 call vundle#end()
 filetype plugin indent on
 
@@ -115,6 +116,7 @@ nnoremap <leader>\| <C-w>v
 nnoremap <leader>- <C-w>s
 " Focus on nerd tree
 nnoremap <leader>. :NERDTreeFocus<cr>
+nnoremap <leader>/ :NERDTreeClose<cr>
 
 nnoremap <leader>? :GhcModType<cr>
 nnoremap <leader>! :GhcModCheckAndLintAsync<cr>

@@ -93,6 +93,8 @@ alias nix-status='nix-env -qsc | grep "^[^=]*$"'
 alias wp='feh --bg-fill'
 alias mount_shares='sudo mount -t vboxsf X_DRIVE /media/sf_X_DRIVE'
 alias mps-youtube='mpsyt'
+alias wifi='ip link set wlp2s0'
+alias sudo='sudo '
 export LIBRARY_PATH=~/.nix-profile/lib/
 export C_INCLUDE_PATH=~/.nix-profile/include/
 export PATH=$HOME/scripts:$HOME/.cabal/bin:$PATH

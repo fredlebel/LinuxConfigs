@@ -2,7 +2,7 @@
 #
 
 RndWP() {
-    echo "%{A:rnd_wallpaper.sh ~/Wallpapers/$1:}%{Fwhite}$2%{F-}%{A}"
+    echo "%{A:rnd_wallpaper.sh ~/Wallpapers/$1:}%{F#dddddd}$2%{F-}%{A}"
 }
 
 Wallpaper() {
@@ -54,7 +54,7 @@ VolumeStatus() {
 
 Date() {
     dateStr=$(date "+%A %b %d %H:%M:%S")
-    echo "%{Forange}$dateStr%{F-}"
+    echo "%{F#eeaa00}$dateStr%{F-}"
 }
 
 Cpu_() {
@@ -130,9 +130,9 @@ Ssid() {
 Battery() {
     capacity=$(cat /sys/class/power_supply/BAT0/capacity)
     if (( capacity < 15 )); then
-        echo "Battery: %{F#ff4444}$capacity%%%{F-}"
+        echo "Battery: %{F#ff4444}$capacity%%{F-}"
     else
-        echo "Battery: %{F#00ff00}$capacity%%%{F-}"
+        echo "Battery: %{F#00ff00}$capacity%%{F-}"
     fi
 }
 
@@ -157,7 +157,7 @@ Temp() {
 
 Brightness() {
     val=$(xbacklight | awk '{print int($1)}')
-    echo "Brightness: %{F#00ff00}$val%{F-}%%"
+    echo "Brightness: %{F#00ff00}$val%{F-}%"
 }
 
 DesktopClickerFull() {
