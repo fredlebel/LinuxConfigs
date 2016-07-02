@@ -25,6 +25,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'xolox/vim-misc'
 Plugin 'shougo/vimproc.vim'
 Plugin 'fholgado/minibufexpl.vim'
+Plugin 'ReplaceWithRegister'
 call vundle#end()
 filetype plugin indent on
 
