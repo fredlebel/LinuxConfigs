@@ -26,6 +26,9 @@ Plugin 'xolox/vim-misc'
 Plugin 'shougo/vimproc.vim'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'ReplaceWithRegister'
+Plugin 'raimondi/delimitmate'
+Plugin 'godlygeek/tabular'
+>>>>>>> Stashed changes
 call vundle#end()
 filetype plugin indent on
 
