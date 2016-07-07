@@ -6,6 +6,7 @@
 .xmonad/cabal.sandbox.config
 .xmonad/history
 .vim/.netrwhist
+.vim/bundle
 .vim/spell/en.utf-8.add.spl
 .vifm/Trash
 .vifm/colors
@@ -28,4 +29,6 @@
 .config/vlc
 .config/xfe
 .config/ghb
+.config/mpd
+.config/photoqt
 
