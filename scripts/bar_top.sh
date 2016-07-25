@@ -10,7 +10,7 @@ while true; do
     cpu_=$(Cpu_)
     net_=$(Net_ enp0s3)
     sleep 1;
-    echo "%{l}$(Bspwm)%{r}$(Cpu $cpu_) $sep $(Mem) $sep $(Swap) $sep $(Disk /dev/sda1 Disk) $sep $(Net $net_ enp0s3) $sep $(VolumeStatus) $sep $(Date) "
+    echo "%{l}$(ResetBar) $(Bspwm)%{r}$(Cpu $cpu_) $sep $(Mem) $sep $(Swap) $sep $(Disk /dev/sda1 Disk) $sep $(Net $net_ enp0s3) $sep $(VolumeStatus) $sep $(Date) "
   else
     cpu_=$(Cpu_)
     net_=$(Net_ wlp2s0)

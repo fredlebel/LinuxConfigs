@@ -26,12 +26,16 @@ CurrentIp() {
     echo "%{F#ffffff}IP: %{F-}%{F#ffff22}$IP%{F-}"
 }
 
+ResetBar() {
+    echo "%{A:reset-bars:}=%{A}"
+}
+
 MusicStatus() {
   music_name="$(mpc current)"
-  music_progress="$(mpc | head -n 2 | tail -n 1 | sed 's/%/%%/g')"
+  music_progress="$(mpc | head -n 2 | tail -n 1 | sed 's/  / /g')"
   music_state="$(mpc | head -n 2 | tail -n 1 | cut -d '[' -f2 | cut -d ']' -f1)"
   if [[ -n "$music_name" ]]; then
-    template="%{A:mpc prev:}%{F#00FFFF}      <|%{F-}%{A}"
+    template="%{A:mpc prev:}%{F#00FFFF}<|%{F-}%{A}"
     template="$template %{A:mpc toggle:}"
     if [[ $music_state == "playing" ]]; then
       template="$template %{F#FFFF00}$music_name%{F-} | %{F#80FF80}$music_progress%{F-}"
@@ -48,7 +52,7 @@ MusicStatus() {
 VolumeStatus() {
   masterP="$(amixer sget Master | sed -n "0,/.*\[\([0-9]\+\)%\].*/s//\1/p")"
   pcmP="$(amixer sget PCM | sed -n "0,/.*\[\([0-9]\+\)%\].*/s//\1/p")"
-  template="Volume: %{F#00ff00}$masterP% $pcmP%%{F-}"
+  template="%{A:amixer set Master 10%+:}%{A3:amixer set Master 10%-:}Volume: %{F#00ff00}$masterP% $pcmP%%{F-}%{A}%{A}"
   echo $template
 }
 
