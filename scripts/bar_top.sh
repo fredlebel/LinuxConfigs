@@ -6,11 +6,12 @@
 sep="%{F#606060}|%{F-}"
 
 while true; do
-  if [ "$(hostname)" = nixos ]; then
+  if [ "$(hostname)" = turing ]; then
     cpu_=$(Cpu_)
-    net_=$(Net_ enp0s3)
+    net_=$(Net_ enp0s31f6)
     sleep 1;
-    echo "%{l}$(ResetBar) $(Bspwm)%{r}$(Cpu $cpu_) $sep $(Mem) $sep $(Swap) $sep $(Disk /dev/sda1 Disk) $sep $(Net $net_ enp0s3) $sep $(VolumeStatus) $sep $(Date) "
+    echo "%{l}$(ResetBar) $(Bspwm)%{r}$(Cpu $cpu_) $sep $(Mem) $sep $(Disk /home Disk) $sep $(Net $net_ enp0s31f6) $sep $(Date) "
+    # echo "%{l}$(ResetBar) $(Bspwm)%{r}$(Cpu $cpu_) $sep $(Mem) $sep $(Disk /dev/sda3 Disk) $sep $(Net $net_ enp0s31f6) $sep $(VolumeStatus) $sep $(Date) "
   else
     cpu_=$(Cpu_)
     net_=$(Net_ wlp2s0)

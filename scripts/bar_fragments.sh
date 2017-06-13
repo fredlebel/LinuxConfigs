@@ -26,6 +26,16 @@ CurrentIp() {
     echo "%{F#ffffff}IP: %{F-}%{F#ffff22}$IP%{F-}"
 }
 
+IpAddresses() {
+    ADDRS=$(ip addr show | grep inet | tail -n +2 | sed "s/.*inet \([^/]*\).* \(.*\)/%{F#ffffff}\2:%{F-}%{F#ffff22}\1%{F-}  /" | paste -s)
+    echo "$ADDRS"
+}
+
+UpTime() {
+    str=$(uptime | sed 's/.*up \([^ ]* [^ ]*\).*/\1/')
+    echo "%{F#ffffff}up: %{F-}%{F#ffff22}$str%{F-}"
+}
+
 ResetBar() {
     echo "%{A:reset-bars:}=%{A}"
 }

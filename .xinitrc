@@ -15,7 +15,7 @@ export EDITOR=vi
 #exec xmonad
 #exec awesome
 #compton -c -o 1 -C -f -i 0.65 &
-if [ "$(hostname)" = nixos ]; then
+if [ "$(hostname)" = turing ]; then
   compton -c -o 1 -C -f -b --config ~/.config/compton.conf
 else
   compton -c -o 1 -C -f --vsync drm -b --config ~/.config/compton.conf
@@ -25,6 +25,8 @@ reset-bars
 #xmobar .xmobarrc        -d &
 #xmobar .xmobarrc_bottom -d &
 #xrandr --output "VGA-0" --auto --output "VGA-1" --auto --right-of "VGA-0"
+#xrandr --output "DP1" --auto --output "HDMI1" --auto --right-of "DP1" --output "HDMI2" --auto --left-of "DP1"
+xrandr --output "HDMI2" --auto --pos 0x1136 --output "DP1" --primary --auto --pos 1280x0 --output "HDMI1" --auto --pos 5120x800
 mpd &
 exec bspwm
 

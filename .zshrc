@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+export ZSH=$HOME/.nix-profile/share/oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -40,6 +40,7 @@ COMPLETION_WAITING_DOTS="true"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
+ZSH_CUSTOM=~/.oh-my-zsh
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -95,6 +96,7 @@ alias mount_shares='sudo mount -t vboxsf X_DRIVE /media/sf_X_DRIVE'
 alias mps-youtube='mpsyt'
 alias wifi='ip link set wlp2s0'
 alias sudo='sudo '
+alias calc=gnome-calculator
 export LIBRARY_PATH=~/.nix-profile/lib/
 export C_INCLUDE_PATH=~/.nix-profile/include/
 export PATH=$HOME/scripts:$HOME/.cabal/bin:$PATH

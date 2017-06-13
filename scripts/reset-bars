@@ -1,9 +1,9 @@
 #!/bin/sh
 
 pkill lemonbar
-if [ "$(hostname)" = nixos ]; then
-    ~/scripts/bar_top.sh    | lemonbar -p    -f "Fixedsys Excelsior 3.01:size=12" | sh &
-    ~/scripts/bar_bottom.sh | lemonbar -p -b -f "Fixedsys Excelsior 3.01:size=12" | sh &
+if [ "$(hostname)" = turing ]; then
+    ~/scripts/bar_top.sh    | lemonbar -p    -B \#a0000000  -f "Consolas:size=16" -g 3840+1280 | sh &
+    ~/scripts/bar_bottom.sh | lemonbar -p -b -B \#a0000000  -f "Consolas:size=16" -g 3840+1280 | sh &
 elif [ "$(hostname)" = shadow ]; then
     ~/scripts/bar_top.sh    | lemonbar -p    -B \#80000000 | sh &
     ~/scripts/bar_bottom.sh | lemonbar -p -b -B \#80000000 | sh &
