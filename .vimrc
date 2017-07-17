@@ -15,8 +15,11 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-obsession'
+Plugin 'tpope/vim-surround'
 Plugin 'eagletmt/ghcmod-vim'
-Plugin 'airblade/vim-gitgutter'
+"Plugin 'airblade/vim-gitgutter'
 Plugin 'itchyny/lightline.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'eagletmt/neco-ghc'
@@ -32,6 +35,8 @@ Plugin 'honza/vim-snippets'
 Plugin 'garbas/vim-snipmate'
 Plugin 'tomtom/tlib_vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'ntpeters/vim-better-whitespace'
 call vundle#end()
 filetype plugin indent on
 
@@ -49,6 +54,9 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+let g:indent_guides_guide_size = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_enable_on_vim_startup = 1
 
 "set clipboard=unnamed
 "let g:pathogen_disabled = ['airline']
@@ -128,6 +136,7 @@ nnoremap <leader>/ :NERDTreeClose<cr>
 nnoremap <leader>? :GhcModType<cr>
 nnoremap <leader>! :GhcModCheckAndLintAsync<cr>
 nnoremap <leader>o :CtrlPMixed<cr>
+nnoremap <leader>t :Tabularize /
 
 " Fast cursorline
 nmap <leader>w :w!<cr>
