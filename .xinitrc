@@ -18,7 +18,7 @@ export EDITOR=vi
 if [ "$(hostname)" = turing ]; then
   compton -c -o 1 -C -f -b --config ~/.config/compton.conf
 else
-  compton -c -o 1 -C -f --vsync drm -b --config ~/.config/compton.conf
+  compton -c -o 1 -C -f -b --config ~/.config/compton.conf
 fi
 sxhkd -f 35 &
 reset-bars

@@ -99,4 +99,4 @@ alias sudo='sudo '
 alias calc=gnome-calculator
 export LIBRARY_PATH=~/.nix-profile/lib/
 export C_INCLUDE_PATH=~/.nix-profile/include/
-export PATH=$HOME/scripts:$HOME/.cabal/bin:$PATH
+export PATH=$HOME/scripts:$HOME/.cabal/bin:$HOME/.npm-packages/bin:$PATH

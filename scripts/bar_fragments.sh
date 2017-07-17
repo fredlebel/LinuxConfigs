@@ -32,7 +32,7 @@ IpAddresses() {
 }
 
 UpTime() {
-    str=$(uptime | sed 's/.*up \([^ ]* [^ ]*\).*/\1/')
+    str=$(uptime | sed 's/.*up[ ]*\([^,]*\).*/\1/')
     echo "%{F#ffffff}up: %{F-}%{F#ffff22}$str%{F-}"
 }
 

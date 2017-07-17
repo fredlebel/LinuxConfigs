@@ -20,16 +20,29 @@ desktops_right="8,9"
 #unset i
 
 bspc monitor HDMI2 -d `eval echo 1/{$desktops_left}`
-bspc monitor DP1 -d `eval echo 1/{$desktops_middle}`
-bspc monitor HDMI1 -d `eval echo 1/{$desktops_right}`
+bspc monitor DP1 -d `eval echo 2/{$desktops_middle}`
+bspc monitor HDMI1 -d `eval echo 3/{$desktops_right}`
 
 #bspc monitor "$(bspc query -M)" -d `eval echo 1/{$desktops1}`
 #bspc monitor "VGA-1" -d `eval echo 2/{$desktops2}`
 
 for desktop in $(bspc query -D); do
-    bspc config -d $desktop top_padding 14
-    bspc config -d $desktop bottom_padding 14
+    bspc config -d $desktop top_padding 0
+    bspc config -d $desktop bottom_padding 0
+    bspc config -d $desktop left_padding 0
+    bspc config -d $desktop right_padding 0
 done
+
+# Work around bottom padding the height of lemonbar even if it's not on the monitor.
+bspc config -d 1/1 bottom_padding -28
+bspc config -d 1/2 bottom_padding -28
+
+#declare -a middleDesktops=("2/3" "2/4" "2/5" "2/6" "2/7")
+#for desktop in $(bspc query -D); do
+#for desktop in ${middleDesktops[@]}; do
+#    bspc config -d $desktop top_padding 14
+#    bspc config -d $desktop bottom_padding 14
+#done
 
 
 #bspc config top_padding 14 
