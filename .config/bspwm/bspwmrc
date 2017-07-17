@@ -1,30 +1,36 @@
-#!/bin/sh
+#! /usr/bin/env zsh
 
 bspc config border_width         8
 bspc config window_gap          25
 
-#desktops="code,terms,web,bg,misc"
-#desktops="1,2,3,4,5"
-desktops_left="1,2"
-desktops_middle="3,4,5,6,7"
-desktops_right="8,9"
+if [ "$(hostname)" = turing ]; then
+    #desktops="code,terms,web,bg,misc"
+    #desktops="1,2,3,4,5"
+    desktops_left="1,2"
+    desktops_middle="3,4,5,6,7"
+    desktops_right="8,9"
 
-#i=1
-#for monitor in $(bspc query -M); do
-#bspc monitor $monitor \
-#        -n "$i" \
-#        -d `eval echo $i/{$desktops}`
-#    let i++
-#done
-#NMON=$i
-#unset i
+    bspc monitor HDMI2 -d `eval echo 1/{$desktops_left}`
+    bspc monitor DP1 -d `eval echo 2/{$desktops_middle}`
+    bspc monitor HDMI1 -d `eval echo 3/{$desktops_right}`
 
-bspc monitor HDMI2 -d `eval echo 1/{$desktops_left}`
-bspc monitor DP1 -d `eval echo 2/{$desktops_middle}`
-bspc monitor HDMI1 -d `eval echo 3/{$desktops_right}`
+    # Work around bottom padding the height of lemonbar even if it's not on the monitor.
+    bspc config -d 1/1 bottom_padding -28
+    bspc config -d 1/2 bottom_padding -28
 
-#bspc monitor "$(bspc query -M)" -d `eval echo 1/{$desktops1}`
-#bspc monitor "VGA-1" -d `eval echo 2/{$desktops2}`
+else
+    desktops="1,2,3,4,5,6,7,8,9"
+    i=1
+    for monitor in $(bspc query -M); do
+    bspc monitor $monitor \
+            -n "$i" \
+            -d `eval echo $i/{$desktops}`
+        let i++
+    done
+    NMON=$i
+    unset i
+
+fi
 
 for desktop in $(bspc query -D); do
     bspc config -d $desktop top_padding 0
@@ -32,10 +38,6 @@ for desktop in $(bspc query -D); do
     bspc config -d $desktop left_padding 0
     bspc config -d $desktop right_padding 0
 done
-
-# Work around bottom padding the height of lemonbar even if it's not on the monitor.
-bspc config -d 1/1 bottom_padding -28
-bspc config -d 1/2 bottom_padding -28
 
 #declare -a middleDesktops=("2/3" "2/4" "2/5" "2/6" "2/7")
 #for desktop in $(bspc query -D); do
