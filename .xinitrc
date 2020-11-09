@@ -20,7 +20,7 @@ if [ "$(hostname)" = turing ]; then
 else
   compton -c -o 1 -C -f -b --config ~/.config/compton.conf
 fi
-sxhkd -f 35 &
+sxhkd &
 reset-bars
 #xmobar .xmobarrc        -d &
 #xmobar .xmobarrc_bottom -d &

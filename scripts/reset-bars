@@ -5,7 +5,8 @@ if [ "$(hostname)" = turing ]; then
     ~/scripts/bar_top.sh    | lemonbar -p    -B \#a0000000  -f "Consolas:size=16" -g 3840+1280 | sh &
     ~/scripts/bar_bottom.sh | lemonbar -p -b -B \#a0000000  -f "Consolas:size=16" -g 3840+1280 | sh &
 elif [ "$(hostname)" = shadow ]; then
-    ~/scripts/bar_top.sh    | lemonbar -p    -B \#80000000 | sh &
-    ~/scripts/bar_bottom.sh | lemonbar -p -b -B \#80000000 | sh &
+    polybar example -r &
+    #~/scripts/bar_top.sh    | lemonbar -p    -B \#80000000 | sh &
+    #~/scripts/bar_bottom.sh | lemonbar -p -b -B \#80000000 | sh &
 fi
 
